@@ -87,7 +87,9 @@ class Updatemyuser extends React.Component {
        
   //   };
     componentDidMount(){
-      debugger;    axios.get('http://localhost:4000/users/getuser' + this.props.match.params.id)
+      const id=this.props.match.params.id;
+       
+       axios.get('http://localhost:4000/users/getuser/:' + id)
         .then(res => {
           this.setState({
               fname:res.data.fname,
@@ -137,6 +139,9 @@ class Updatemyuser extends React.Component {
     render() {
     
         return (
+         
+          <div>
+             <h1>djkdjk</h1>
             <Formik
                  initialValues={{ fname:"",lname:"",email: "", password: "" ,dob:"",profileImg:""}}
                 validationSchema={LoginSchema}
@@ -277,8 +282,11 @@ class Updatemyuser extends React.Component {
                     </Form>
                 )}
             />
+              </div>
         )
+      
     }
+   
 }
 
 export default Updatemyuser;

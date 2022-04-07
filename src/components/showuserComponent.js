@@ -3,18 +3,14 @@ import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import Userlist from './userlistComponent';
 
-
-
 export default class Showuser extends Component {
+  state = 
+   {
+     users: []
+   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      users: []
-    };
-  }
-
-  componentDidMount() {
+   componentDidMount()
+    {
     axios.get('http://localhost:4000/users/')
       .then(res => {
         this.setState({
@@ -24,13 +20,21 @@ export default class Showuser extends Component {
       .catch((error) => {
         console.log(error);
       })
-  }
+   }
 
-  DataTable() {
-    return this.state.users.map((res, i) => {
+   DataTable()
+    {
+      return this.state.users.map((res, i) => {
       return <Userlist obj={res} key={i} />;
     });
-  }
+   }
+
+  
+  
+
+  
+
+ 
 
 
   render() {
@@ -43,17 +47,22 @@ export default class Showuser extends Component {
             <th>Last Name</th>
             <th>Date Of Birth</th>
             <th>Email</th>
-           
-          
             <th>Action</th>
-          </tr>
+            </tr>
         </thead>
         <tbody>
-         
-          {this.DataTable()}
-          
+        {this.DataTable()}
         </tbody>
-      </Table>
+        </Table>
     </div>);
   }
 }
+           
+          
+           
+          
+       
+
+       
+       
+      
